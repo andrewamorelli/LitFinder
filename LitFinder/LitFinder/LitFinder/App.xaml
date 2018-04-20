@@ -12,8 +12,14 @@
             <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
             <Color x:Key="LightTextColor">#999999</Color>
 
+            <Color x:Key="NAN_Blue">#2F70AB</Color>
+            <Color x:Key="NAN_LightBlue">#ADD7EB</Color>
+            <Color x:Key="NAN_DarkBlue">#2B353B</Color>
+            <Color x:Key="NAN_Grey">#2A363B</Color>
+            <Color x:Key="NAN_White">#FFFFFF</Color>
+            
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="BarBackgroundColor" Value="#2F70AB" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
         </ResourceDictionary>

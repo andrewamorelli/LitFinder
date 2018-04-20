@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LitFinder.Views.MainPage"
-             xmlns:vm="clr-namespace:LitFinder.ViewModels;"
-             Title="Address Search">
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="LitFinder.Views.LoginPage" 
+            xmlns:vm="clr-namespace:LitFinder.ViewModels;"
+            Title="Login">
     <ContentPage.BindingContext>
-        <vm:MainViewModel />
+        <vm:LoginViewModel />
     </ContentPage.BindingContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -19,10 +19,10 @@
                 </ContentView>
             </StackLayout>
         </StackLayout>
-        <ScrollView  Grid.Row="1" BackgroundColor="{StaticResource NAN_LightBlue} ">
+        <ScrollView  Grid.Row="1" BackgroundColor="{StaticResource NAN_Blue} ">
             <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                <StackLayout>
-                    <Entry x:Name="addressText" Placeholder="Address">
+                <StackLayout IsVisible="{Binding NotBusy}">
+                    <Entry x:Name="usernameText" Placeholder="Username" Text="{Binding Username}">
                         <Entry.TextColor>
                             <OnPlatform x:TypeArguments="Color">
                                 <On Platform="iOS" Value="{StaticResource NAN_Grey}"/>
@@ -30,8 +30,16 @@
                             </OnPlatform>
                         </Entry.TextColor>
                     </Entry>
-                    <Button x:Name="btnSearch" Clicked="Search_Clicked" Margin="0,10,0,0" BorderColor="{StaticResource NAN_White}" Text="Search"  Command="{Binding SearchCommand}" 
-                    CommandParameter="{Binding Source={x:Reference addressText}, Path=Text}" HorizontalOptions="Center" WidthRequest="250" BackgroundColor="{StaticResource NAN_Grey}" TextColor="White" />
+                    <Entry x:Name="passwordText" Placeholder="Password" IsPassword="True">
+                        <Entry.TextColor>
+                            <OnPlatform x:TypeArguments="Color">
+                                <On Platform="iOS" Value="{StaticResource NAN_Grey}"/>
+                                <On Platform="Android" Value="{StaticResource NAN_White}"/>
+                            </OnPlatform>
+                        </Entry.TextColor>
+                    </Entry>
+                    <Button x:Name="btnLogin" Clicked="Login_Clicked" Margin="0,10,0,0" BorderColor="{StaticResource NAN_White}" Text="Login"  Command="{Binding LoginCommand}" 
+                    CommandParameter="{Binding Source={x:Reference passwordText}, Path=Text}" HorizontalOptions="Center" WidthRequest="250" BackgroundColor="{StaticResource NAN_Grey}" TextColor="White" />
                     <ActivityIndicator x:Name="loadingIndicator" IsRunning="false" IsVisible="false" HeightRequest="25" Color="{StaticResource NAN_White}"
                           WidthRequest="25" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,45,0,0">
                     </ActivityIndicator>

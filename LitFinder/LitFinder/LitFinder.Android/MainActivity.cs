@@ -20,7 +20,16 @@ namespace LitFinder.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.FormsMaps.Init(this, bundle);
             LoadApplication(new App());
+        }
+
+        public override void OnBackPressed()
+        {
+            // This prevents a user from being able to hit the back button and leave the login page.
+            if (Settings.DisableBack) return;
+
+            base.OnBackPressed();
         }
     }
 }
